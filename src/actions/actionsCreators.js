@@ -12,6 +12,16 @@ export const getTopTracks = (data) => ({
     payload: data
 });
 
+export const getNextTopArtist = (index) => ({
+    type: ActionTypes.GET_NEXT_TOP_ARTIST,
+    index
+});
+
+export const getPrevTopArtist = (index) => ({
+    type: ActionTypes.GET_NEXT_TOP_ARTIST,
+    index
+});
+
 export const getTopArtistsMiddle = () => dispatch => {
     fetch(`http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${API_KEY}&format=json&limit=10`)
       .then(res=>res.json())

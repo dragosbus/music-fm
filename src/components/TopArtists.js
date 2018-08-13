@@ -1,20 +1,8 @@
 import React from 'react';
 import Artist from './Artist';
 
-class TopArtists extends React.Component {
-  shouldComponentUpdate(nextProps) {
-    console.log(nextProps);
-    return nextProps !== undefined;
-  }
-  render() {
-    return (
-      <Artist
-        image={this.props.image}
-        name={this.props.name}
-        changeArtist={this.props.changeArtist}
-      />
-    );
-  }
-}
+const TopArtists = props => {
+  return <Artist image={props.image} name={props.name} changeArtist={props.changeArtist} />;
+};
 
 export default TopArtists;
