@@ -5,6 +5,8 @@ import './App.css';
 import Header from './components/Header';
 import TopArtists from './components/TopArtists';
 
+import * as Actions from './actions/actionsCreators';
+
 const API_KEY = "79dd06bbb5fb8bcd9dcaed15ebeafe97";
 
 class App extends Component {
@@ -16,16 +18,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${API_KEY}&format=json&limit=10`)
-      .then(res=>res.json())
-      .then(res=>{
-        this.setState(prevState=>({
-          topTenArtists: prevState.topTenArtists.concat(res.artists.artist)
-        }));
-      });
-    // fetch(`http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=${API_KEY}&format=json`)
-    //   .then(res=>res.json())
-    //   .then(res=>console.log(res))
+    this.props.getTopArtists()
   }
 
   render() {
@@ -41,11 +34,14 @@ class App extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-
+  getTopArtists() {
+    dispatch(Actions.getTopArtistsMiddle())
+  }
 });
 
 const mapStateToProps = state => ({
-
+  topAtists: state.topArtists,
+  topTracks: state.topTracks
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
