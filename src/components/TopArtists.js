@@ -1,12 +1,13 @@
 import React from 'react';
-import Artist from './Artist';
 
 const TopArtists = props => {
-    return(
-        <ul className="artists-list">
-            {props.topArtists.map(artist=> <Artist key={artist.mbid} {...artist}/>)}
-        </ul>
-    );
+    console.log(props.artists[0])
+  return (
+    <div>
+      <img src={props.image} />
+      <p>{props.name}</p>
+    </div>
+  );
 };
 
 export default TopArtists;

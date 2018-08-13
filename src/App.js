@@ -18,11 +18,13 @@ class App extends Component {
     fetch(`http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${API_KEY}&format=json&limit=10`)
       .then(res=>res.json())
       .then(res=>{
-        console.log(res.artists.artist)
         this.setState(prevState=>({
           topTenArtists: prevState.topTenArtists.concat(res.artists.artist)
-        }))
+        }));
       });
+    // fetch(`http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=${API_KEY}&format=json`)
+    //   .then(res=>res.json())
+    //   .then(res=>console.log(res))
   }
 
   render() {
@@ -30,7 +32,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <TopArtists
-          topArtists={this.state.topTenArtists}
+          artists={this.state.topTenArtists}
         />
       </div>
     );
