@@ -6,9 +6,13 @@ class SearchForm extends Component {
         super(props);
     }
 
+    formSubmit(e) {
+        e.preventDefault();
+    }
+
     render() {
         return(
-            <form className="search-form">
+            <form className="search-form" onSubmit={this.formSubmit}>
                 <input type="text"/>
                 <button>
                     <FaSearch/>

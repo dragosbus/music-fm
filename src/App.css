@@ -58,3 +58,48 @@
   text-align: center;
   margin-top: 3rem;
 }
+
+.artists-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.artist {
+  margin: 1rem auto;
+  width: 80%;
+  position: relative;
+  transition: transform 0.45s ease-in;
+}
+
+.artist img {
+  width: 100%;
+  height: auto;
+}
+
+.artist p {
+  font-size: 2rem;
+  position: absolute;
+  bottom: 0;
+  background: rgb(29, 28, 28);
+  color: #fff;
+  width: 100%;
+  padding: 1rem;
+}
+
+.artist:hover {
+  transform: scale(1.05, 1.05);
+}
+
+@media (min-width: 660px) {
+  .artist {
+    width: 45%;
+  }
+}
+
+@media (min-width: 960px) {
+  .artist {
+    width: 30%;
+  }
+}
