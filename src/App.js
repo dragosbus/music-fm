@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import './App.css';
 
 import Header from './components/Header';
@@ -39,4 +40,12 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+
+});
+
+const mapStateToProps = state => ({
+
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
