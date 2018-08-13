@@ -13,20 +13,31 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      topTenArtists: []
+      index: 0
     }
   }
 
   componentDidMount() {
-    this.props.getTopArtists()
+    this.props.getTopArtists();
+  }
+
+  changeArtist() {
+    this.setState({
+      index: this.state.index < this.props.topArtists.length - 1 ? this.state.index + 1 : 0
+    });
   }
 
   render() {
+    let image = this.props.topArtists[this.state.index] ? this.props.topArtists[this.state.index]['image'][2]['#text']: 'Unknown';
+    let name = this.props.topArtists[this.state.index] ? this.props.topArtists[this.state.index]['name']: 'Unknown';
+    
     return (
       <div className="App">
         <Header />
         <TopArtists
-          artists={this.state.topTenArtists}
+          image={image}
+          name={name}
+          changeArtist={this.changeArtist.bind(this)}
         />
       </div>
     );
@@ -40,7 +51,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  topAtists: state.topArtists,
+  topArtists: state.topArtists,
   topTracks: state.topTracks
 });
 
