@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import './App.css';
 
 import Header from './components/Header';
 import TopArtists from './components/TopArtists';
+
+import * as Actions from './actions/actionsCreators';
 
 const API_KEY = "79dd06bbb5fb8bcd9dcaed15ebeafe97";
 
@@ -10,20 +13,12 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      topTenArtists: [],
       posLeft: 0
     }
   }
 
   componentDidMount() {
-    fetch(`http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${API_KEY}&format=json&limit=10`)
-      .then(res=>res.json())
-      .then(res=>{
-        console.log(res.artists.artist)
-        this.setState(prevState=>({
-          topTenArtists: prevState.topTenArtists.concat(res.artists.artist)
-        }))
-      });
+    this.props.getTopArtists();
   }
 
   nextTop() {
@@ -39,11 +34,17 @@ class App extends Component {
   }
 
   render() {
+
+    let {topArtists, indexTopArtist} = this.props;
+    
+    let image = topArtists[indexTopArtist] ? topArtists[indexTopArtist]['image'][2]['#text']: 'Unknown';
+    let name = topArtists[indexTopArtist] ? topArtists[indexTopArtist]['name']: 'Unknown';
+
     return (
       <div className="App">
         <Header />
         <TopArtists
-          topArtists={this.state.topTenArtists}
+          topArtists={topArtists}
           nextArtist={this.nextTop.bind(this)}
           prevArtist={this.prevTop.bind(this)}
           left={this.state.posLeft}
@@ -53,4 +54,17 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  getTopArtists() {
+    dispatch(Actions.getTopArtistsMiddle())
+  },
+  
+});
+
+const mapStateToProps = state => ({
+  topArtists: state.topArtists,
+  topTracks: state.topTracks,
+  indexTopArtist: state.indexTopArtist
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
