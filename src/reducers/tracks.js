@@ -1,8 +1,8 @@
 import * as ActionTypes from '../actionTypes/actionTypes';
 
-export const topTracksReducer = (state=[], action) => {
+export const tracksReducer = (state=[], action) => {
     switch(action.type) {
-        case ActionTypes.GET_TOP_TRACKS:
+        case ActionTypes.GET_TRACKS:
             return action.payload;
         default:
             return state;

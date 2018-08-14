@@ -1,11 +1,11 @@
 import {combineReducers} from 'redux';
 
-import {topArtistsReducer} from './topArtists';
-import {topTracksReducer} from './topTracks';
+import {artistsReducer} from './artists';
+import {tracksReducer} from './tracks';
 
 const rootReducer = combineReducers({
-    topArtists: topArtistsReducer,
-    topTracks: topTracksReducer
+    artists: artistsReducer,
+    tracks: tracksReducer
 });
 
 export default rootReducer;

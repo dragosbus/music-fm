@@ -18,7 +18,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.props.getTopArtists();
+    this.props.getArtists();
   }
 
   nextTop() {
@@ -34,7 +34,7 @@ class App extends Component {
   }
 
   render() {
-    let { topArtists } = this.props;
+    let { artists } = this.props;
 
     return (
       <div className="App">
@@ -46,14 +46,14 @@ class App extends Component {
               path="/"
               render={() => (
                 <TopArtists
-                  topArtists={topArtists}
+                  topArtists={artists.slice(0,10)}
                   nextArtist={this.nextTop.bind(this)}
                   prevArtist={this.prevTop.bind(this)}
                   left={this.state.posLeft}
                 />
               )}
             />
-            <Route path='/artists' render={()=> <AllArtists artists={topArtists}/>}/>
+            <Route path='/artists' render={()=> <AllArtists artists={artists}/>}/>
           </div>
         </BrowserRouter>
       </div>
@@ -62,14 +62,14 @@ class App extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  getTopArtists() {
-    dispatch(Actions.getTopArtistsMiddle());
+  getArtists() {
+    dispatch(Actions.getArtistsMiddle());
   }
 });
 
 const mapStateToProps = state => ({
-  topArtists: state.topArtists,
-  topTracks: state.topTracks
+  artists: state.artists,
+  tracks: state.tracks
 });
 
 export default connect(
