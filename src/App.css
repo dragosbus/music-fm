@@ -85,6 +85,14 @@
   position: relative;
 }
 
+.all-artists {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 .artist {
   position: absolute;
   width: 16rem;
@@ -93,7 +101,12 @@
   transition: all 0.5s ease-in;
 }
 
-.artist p {
+.artist-all {
+  width: 50%;
+}
+
+.artist p,
+.artist-all p {
   position: absolute;
   color: #fff;
   font-size: 1.6rem;
@@ -101,6 +114,11 @@
   padding: 1rem 0;
   margin-top: -40px;
   background: rgba(10, 10, 10, 0.474);
+}
+
+.artist-all p {
+  position: relative;
+  width: 100%;
 }
 
 .artist:hover {
@@ -112,7 +130,8 @@
   margin: 0 2rem;
 }
 
-.artist img {
+.artist img,
+.artist-all img {
   width: 100%;
 }
 
@@ -152,3 +171,20 @@
   color: rgb(27, 64, 121);
 }
 
+@media(min-width: 560px) {
+  .artist-all {
+    width: 33.3333%;
+  }
+}
+
+@media(min-width: 760px) {
+  .artist-all {
+    width: 25%;
+  }
+}
+
+@media(min-width: 960px) {
+  .artist-all {
+    width: 20%;
+  }
+}

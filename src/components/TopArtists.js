@@ -11,7 +11,7 @@ const TopArtists = props => {
       </button>
       <ul className="artists-list">
         {props.topArtists.map((artist, i) => (
-          <Artist key={artist.mbid} {...artist} index={i} left={props.left} />
+          <Artist path='/' key={artist.mbid} {...artist} index={i} left={props.left} />
         ))}
         <li className="artist see-all" style={{ left: `${props.left + 10 * 160}px` }} onClick={props.seeAllArtists}>
           <Link to="/artists">See All</Link>

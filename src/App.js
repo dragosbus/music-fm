@@ -41,19 +41,21 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Header />
-            <Route
-              exact
-              path="/"
-              render={() => (
-                <TopArtists
-                  topArtists={artists.slice(0,10)}
-                  nextArtist={this.nextTop.bind(this)}
-                  prevArtist={this.prevTop.bind(this)}
-                  left={this.state.posLeft}
-                />
-              )}
-            />
-            <Route path='/artists' render={()=> <AllArtists artists={artists}/>}/>
+            <Switch>
+              <Route
+                exact
+                path="/"
+                render={() => (
+                  <TopArtists
+                    topArtists={artists.slice(0, 10)}
+                    nextArtist={this.nextTop.bind(this)}
+                    prevArtist={this.prevTop.bind(this)}
+                    left={this.state.posLeft}
+                  />
+                )}
+              />
+              <Route path="/artists" render={() => <AllArtists artists={artists} />} />
+            </Switch>
           </div>
         </BrowserRouter>
       </div>

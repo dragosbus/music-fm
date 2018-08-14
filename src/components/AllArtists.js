@@ -3,7 +3,7 @@ import Artist from './Artist';
 
 const AllArtists = props => {
     return(
-        <ul>
+        <ul className="all-artists">
             {props.artists.map(artist=><Artist {...artist}/>)}
         </ul>
     );
