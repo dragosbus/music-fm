@@ -34,13 +34,13 @@ class App extends Component {
   }
 
   render() {
-    let { artists } = this.props;
-
+    let { artists, searchTerm, setSearchTerm } = this.props;
+    console.log(this.props);
     return (
       <div className="App">
         <BrowserRouter>
           <div>
-            <Header />
+            <Header setSearchTerm={setSearchTerm} />
             <Switch>
               <Route
                 exact
@@ -66,12 +66,16 @@ class App extends Component {
 const mapDispatchToProps = dispatch => ({
   getArtists() {
     dispatch(Actions.getArtistsMiddle());
+  },
+  setSearchTerm(term) {
+    dispatch(Actions.searchTerm(term));
   }
 });
 
 const mapStateToProps = state => ({
   artists: state.artists,
-  tracks: state.tracks
+  tracks: state.tracks,
+  searchTerm: state.searchTerm
 });
 
 export default connect(
