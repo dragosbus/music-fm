@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Artist = props => {
-  
   return (
     <li
       className="artist"

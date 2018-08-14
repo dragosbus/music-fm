@@ -122,7 +122,6 @@
   border: none;
   position: absolute;
   right: 0;
-  
   height: 15.5rem;
   width: 6rem;
   color: #fff;
@@ -140,5 +139,16 @@
 .top-artists:hover .prev {
   opacity: 1;
   z-index: 10000;
+}
+
+.see-all {
+  background: #fff;
+  height: 15rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  cursor: pointer;
+  color: rgb(27, 64, 121);
 }
 
