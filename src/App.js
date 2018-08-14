@@ -23,10 +23,10 @@ class App extends Component {
 
   render() {
 
-    let {indexTopArtist, getNextTopArtist} = this.props;
-
-    let image = this.props.topArtists[indexTopArtist] ? this.props.topArtists[indexTopArtist]['image'][2]['#text']: 'Unknown';
-    let name = this.props.topArtists[indexTopArtist] ? this.props.topArtists[indexTopArtist]['name']: 'Unknown';
+    let {topArtists, indexTopArtist, getNextTopArtist, getPrevTopArtist} = this.props;
+    
+    let image = topArtists[indexTopArtist] ? topArtists[indexTopArtist]['image'][2]['#text']: 'Unknown';
+    let name = topArtists[indexTopArtist] ? topArtists[indexTopArtist]['name']: 'Unknown';
 
     return (
       <div className="App">
@@ -34,7 +34,8 @@ class App extends Component {
         <TopArtists
           image={image}
           name={name}
-          changeArtist={getNextTopArtist(indexTopArtist)}
+          changeNextArtist={getNextTopArtist}
+          changePrevArtist={getPrevTopArtist}
         />
       </div>
     );
@@ -45,11 +46,11 @@ const mapDispatchToProps = dispatch => ({
   getTopArtists() {
     dispatch(Actions.getTopArtistsMiddle())
   },
-  getNextTopArtist(index) {
-    dispatch(Actions.getNextTopArtist(index))
+  getNextTopArtist() {
+    dispatch(Actions.getNextTopArtist())
   },
-  getPrevTopArtist(index) {
-    dispatch(Actions.getPrevTopArtist(index));
+  getPrevTopArtist() {
+    dispatch(Actions.getPrevTopArtist());
   }
 });
 

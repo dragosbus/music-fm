@@ -12,14 +12,12 @@ export const getTopTracks = (data) => ({
     payload: data
 });
 
-export const getNextTopArtist = (index) => ({
-    type: ActionTypes.GET_NEXT_TOP_ARTIST,
-    index
+export const getNextTopArtist = () => ({
+    type: ActionTypes.GET_NEXT_TOP_ARTIST
 });
 
-export const getPrevTopArtist = (index) => ({
-    type: ActionTypes.GET_NEXT_TOP_ARTIST,
-    index
+export const getPrevTopArtist = () => ({
+    type: ActionTypes.GET_PREV_TOP_ARTIST
 });
 
 export const getTopArtistsMiddle = () => dispatch => {
