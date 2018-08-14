@@ -10,7 +10,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      topTenArtists: []
+      topTenArtists: [],
+      posLeft: 0
     }
   }
 
@@ -25,12 +26,20 @@ class App extends Component {
       });
   }
 
+  nextTop() {
+    this.setState({
+      posLeft: this.state.posLeft > -1600 ? this.state.posLeft - 240 : 0
+    });
+  }
+
   render() {
     return (
       <div className="App">
         <Header />
         <TopArtists
           topArtists={this.state.topTenArtists}
+          nextArtist={this.nextTop.bind(this)}
+          left={this.state.posLeft}
         />
       </div>
     );

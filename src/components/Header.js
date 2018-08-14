@@ -5,9 +5,9 @@ const Header = () => (
   <header className="main-header">
     <h1 className="logo">Music</h1>
     <SearchForm />
-    <div className="intro">
+    {/* <div className="intro">
         <h2>Name any song in seconds</h2>
-    </div>
+    </div> */}
   </header>
 );
 

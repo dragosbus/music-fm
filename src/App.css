@@ -3,6 +3,7 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  background: #fff;
 }
 
 .logo {
@@ -59,47 +60,69 @@
   margin-top: 3rem;
 }
 
+.top-artists {
+  padding: 1rem;
+}
+
+.top-artists h2 {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 300;
+}
+
 .artists-list {
+  width: 100%;
+  height: 30rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
+  position: relative;
 }
 
 .artist {
-  margin: 1rem auto;
-  width: 80%;
-  position: relative;
-  transition: transform 0.45s ease-in;
+  position: absolute;
+  width: 20rem;
+  max-height: 19rem;
+  padding: 0.5rem;
+  transition: all 0.5s ease-in;
+}
+
+.artist p {
+  position: absolute;
+  color: #fff;
+  font-size: 1.6rem;
+  width: 95%;
+  padding: 1rem 0;
+  margin-top: -40px;
+  background: rgba(10, 10, 10, 0.474);
+}
+
+.artist:hover {
+  transform: scale(1.2,1.5);
+  z-index: 1000;
 }
 
 .artist img {
   width: 100%;
-  height: auto;
 }
 
-.artist p {
-  font-size: 2rem;
+.next {
+  background: rgba(10, 10, 10, 0.774);
+  border: none;
   position: absolute;
+  right: 0;
+  top: 24.15%;
   bottom: 0;
-  background: rgb(29, 28, 28);
+  height: 19rem;
+  width: 10rem;
   color: #fff;
-  width: 100%;
-  padding: 1rem;
+  font-size: 1.75rem;
+  opacity: 0;
+  transition: opacity 0.4s ease-in;
 }
 
-.artist:hover {
-  transform: scale(1.05, 1.05);
+.top-artists:hover .next {
+  opacity: 1;
+  z-index: 10000;
 }
 
-@media (min-width: 660px) {
-  .artist {
-    width: 45%;
-  }
-}
-
-@media (min-width: 960px) {
-  .artist {
-    width: 30%;
-  }
-}
