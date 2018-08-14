@@ -34,7 +34,7 @@ class App extends Component {
 
   prevTop() {
     this.setState({
-      posLeft: this.state.posLeft < 0 ? this.state.posLeft + 320 : -1700 + window.outerWidth
+      posLeft: this.state.posLeft < 0 ? this.state.posLeft + 320 : -1660 + window.outerWidth
     });
   }
 
