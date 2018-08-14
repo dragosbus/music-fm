@@ -81,7 +81,7 @@
 
 .artist {
   position: absolute;
-  width: 20rem;
+  width: 16rem;
   max-height: 19rem;
   padding: 0.5rem;
   transition: all 0.5s ease-in;
@@ -112,14 +112,15 @@
   border: none;
   position: absolute;
   right: 0;
-  top: 24.15%;
+  top: 26.25%;
   bottom: 0;
-  height: 19rem;
+  height: 15.5rem;
   width: 6rem;
   color: #fff;
   font-size: 1.75rem;
   opacity: 0;
   transition: opacity 0.4s ease-in;
+  outline: none;
 }
 
 .prev {

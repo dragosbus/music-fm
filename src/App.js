@@ -28,13 +28,13 @@ class App extends Component {
 
   nextTop() {
     this.setState({
-      posLeft: this.state.posLeft > -1650 ? this.state.posLeft - 240 : 0
+      posLeft: this.state.posLeft > -1600 + window.outerWidth ? this.state.posLeft - 320 : 0
     });
   }
 
   prevTop() {
     this.setState({
-      posLeft: this.state.posLeft < 0 ? this.state.posLeft + 240 : -1660
+      posLeft: this.state.posLeft < 0 ? this.state.posLeft + 320 : -1700 + window.outerWidth
     });
   }
 
