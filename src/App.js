@@ -28,7 +28,13 @@ class App extends Component {
 
   nextTop() {
     this.setState({
-      posLeft: this.state.posLeft > -1600 ? this.state.posLeft - 240 : 0
+      posLeft: this.state.posLeft > -1650 ? this.state.posLeft - 240 : 0
+    });
+  }
+
+  prevTop() {
+    this.setState({
+      posLeft: this.state.posLeft < 0 ? this.state.posLeft + 240 : -1660
     });
   }
 
@@ -39,6 +45,7 @@ class App extends Component {
         <TopArtists
           topArtists={this.state.topTenArtists}
           nextArtist={this.nextTop.bind(this)}
+          prevArtist={this.prevTop.bind(this)}
           left={this.state.posLeft}
         />
       </div>

@@ -6,7 +6,7 @@ const Artist = props => {
 
     return(
         <li className="artist" style={{left: `${props.left + props.index * 200}px`}}>
-            <img src={props.image[2]['#text']}/>
+            <img src={props.image[3]['#text']}/>
             <p>{props.name}</p>
         </li>
     );
