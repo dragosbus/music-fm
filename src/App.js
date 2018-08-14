@@ -35,10 +35,7 @@ class App extends Component {
 
   render() {
 
-    let {topArtists, indexTopArtist} = this.props;
-    
-    let image = topArtists[indexTopArtist] ? topArtists[indexTopArtist]['image'][2]['#text']: 'Unknown';
-    let name = topArtists[indexTopArtist] ? topArtists[indexTopArtist]['name']: 'Unknown';
+    let {topArtists} = this.props;
 
     return (
       <div className="App">
@@ -63,8 +60,7 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
   topArtists: state.topArtists,
-  topTracks: state.topTracks,
-  indexTopArtist: state.indexTopArtist
+  topTracks: state.topTracks
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
