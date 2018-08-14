@@ -12,12 +12,14 @@ export const getTopTracks = (data) => ({
     payload: data
 });
 
-export const getNextTopArtist = () => ({
-    type: ActionTypes.GET_NEXT_TOP_ARTIST
+export const getNextTopArtist = (maxLen) => ({
+    type: ActionTypes.GET_NEXT_TOP_ARTIST,
+    maxLen
 });
 
-export const getPrevTopArtist = () => ({
-    type: ActionTypes.GET_PREV_TOP_ARTIST
+export const getPrevTopArtist = (maxLen) => ({
+    type: ActionTypes.GET_PREV_TOP_ARTIST,
+    maxLen
 });
 
 export const getTopArtistsMiddle = () => dispatch => {

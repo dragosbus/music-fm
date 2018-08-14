@@ -36,6 +36,7 @@ class App extends Component {
           name={name}
           changeNextArtist={getNextTopArtist}
           changePrevArtist={getPrevTopArtist}
+          maxLen={topArtists.length - 1}
         />
       </div>
     );
@@ -46,11 +47,11 @@ const mapDispatchToProps = dispatch => ({
   getTopArtists() {
     dispatch(Actions.getTopArtistsMiddle())
   },
-  getNextTopArtist() {
-    dispatch(Actions.getNextTopArtist())
+  getNextTopArtist(maxLen) {
+    dispatch(Actions.getNextTopArtist(maxLen))
   },
-  getPrevTopArtist() {
-    dispatch(Actions.getPrevTopArtist());
+  getPrevTopArtist(maxLen) {
+    dispatch(Actions.getPrevTopArtist(maxLen));
   }
 });
 
