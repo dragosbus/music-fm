@@ -3,11 +3,11 @@ import Track from './Track';
 
 const TopTracks = props => {
   return (
-    <div className="tracks">
+    <div className="top-tracks">
         <h2>Top Tracks</h2>
-      <ul style={{position:'absolute', left: props.left}} className="top-tracks"  onClick={props.nextTrack}>
-        {props.tracks.map(track => (
-          <Track {...track} />
+      <ul className="tracks">
+        {props.tracks.map((track, i) => (
+          <Track {...track} index={i} left={props.left}/>
         ))}
       </ul>
       <button onClick={props.nextTrack} className="next-track">
