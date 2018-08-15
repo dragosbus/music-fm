@@ -180,10 +180,16 @@
   color: rgb(27, 64, 121);
 }
 
+.tracks {
+  height: 30rem;
+}
+
 .top-tracks {
   width: 100%;
+  padding: 1rem;
   overflow-x: visible;
   white-space: nowrap;
+  transition: all 0.45s ease-out;
 }
 
 .top-tracks .track {
@@ -210,6 +216,12 @@
 
 .top-tracks .track:hover {
  margin: 0 2rem;
+}
+
+.next-track{
+  z-index: 10000;
+  position: absolute;
+  right: 0;
 }
 
 @media(min-width: 560px) {

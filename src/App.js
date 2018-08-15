@@ -15,8 +15,7 @@ class App extends Component {
     super(props);
     this.state = {
       posLeft: 0,
-      tracksPerPage: 0,
-      pageTrack: 1
+      posLeftTracks: 0
     };
   }
 
@@ -24,16 +23,6 @@ class App extends Component {
     //fetch data
     this.props.getArtists();
     this.props.getTracks();
-    //set how many tracks should pe on the page depend of the viewport
-    if(window.outerWidth > 0 && window.outerWidth <= 560) {
-      this.setState({tracksPerPage: 2});
-    } else if(window.outerWidth > 560 && window.outerWidth <= 760) {
-      this.setState({tracksPerPage: 3});
-    } else if(window.outerWidth > 760 && window.outerWidth <= 960) {
-      this.setState({tracksPerPage: 4});
-    } else {
-      this.setState({tracksPerPage: 5});
-    }
   }
 
   nextTop() {
@@ -49,13 +38,16 @@ class App extends Component {
   }
 
   nextTrack() {
-    this.setState({pageTrack: this.state.pageTrack * this.state.tracksPerPage < this.props.tracks.length ? this.state.pageTrack + 1 : 1})
+    this.setState({
+      pageTrack:
+        this.state.pageTrack * this.state.tracksPerPage < this.props.tracks.length ? this.state.pageTrack + 1 : 1,
+      posLeftTracks: this.state.posLeftTracks - 200
+    });
   }
 
   render() {
     let { artists, searchTerm, tracks, setSearchTerm } = this.props;
-    let {pageTrack, tracksPerPage} = this.state;
-    
+
     return (
       <div className="App">
         <BrowserRouter>
@@ -73,11 +65,8 @@ class App extends Component {
                       prevArtist={this.prevTop.bind(this)}
                       left={this.state.posLeft}
                     />
-                    
-                    <TopTracks 
-                      tracks={tracks.slice((pageTrack-1) * tracksPerPage, pageTrack * tracksPerPage)} 
-                      nextTrack={this.nextTrack.bind(this)} 
-                    />
+
+                    <TopTracks tracks={tracks.slice(0,10)} nextTrack={this.nextTrack.bind(this)} left={this.state.posLeftTracks} />
                   </div>
                 )}
               />
