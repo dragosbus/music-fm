@@ -83,7 +83,7 @@
 
 .tracks h2{
   margin: 0;
-  margin-bottom: 3rem;
+  margin-bottom: 25rem;
 }
 
 .artists-list {
@@ -145,7 +145,8 @@
 }
 
 .next,
-.prev {
+.prev,
+.next-track {
   background: rgba(10, 10, 10, 0.774);
   border: none;
   position: absolute;
@@ -164,7 +165,8 @@
 }
 
 .top-artists:hover .next,
-.top-artists:hover .prev {
+.top-artists:hover .prev,
+.tracks:hover .next-track {
   opacity: 1;
   z-index: 10000;
 }
@@ -181,7 +183,12 @@
 }
 
 .tracks {
-  height: 30rem;
+  height: 29rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+ 
 }
 
 .top-tracks {
@@ -215,13 +222,24 @@
 }
 
 .top-tracks .track:hover {
- margin: 0 2rem;
+ margin: 0 4rem;
+ transform: scale(1.2)
 }
 
-.next-track{
-  z-index: 10000;
+.top-tracks .track:hover .details-track {
+  opacity: 1;
+}
+
+.details-track {
   position: absolute;
+  bottom: 5px;
+  left: 0;
   right: 0;
+  font-size: 3rem;
+  margin: 0 auto;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.45s ease-in;
 }
 
 @media(min-width: 560px) {
@@ -249,7 +267,7 @@
     width: 20%;
   }
   .top-tracks .track {
-    width: 20%;
+    width: 15%;
   }
 }
 

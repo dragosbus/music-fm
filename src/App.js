@@ -39,15 +39,13 @@ class App extends Component {
 
   nextTrack() {
     this.setState({
-      pageTrack:
-        this.state.pageTrack * this.state.tracksPerPage < this.props.tracks.length ? this.state.pageTrack + 1 : 1,
-      posLeftTracks: this.state.posLeftTracks - 200
+      posLeftTracks: this.state.posLeftTracks > -1800 + window.outerWidth ? this.state.posLeftTracks - 310 : 0
     });
   }
 
   render() {
     let { artists, searchTerm, tracks, setSearchTerm } = this.props;
-
+    console.log(this.state);
     return (
       <div className="App">
         <BrowserRouter>
