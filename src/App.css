@@ -47,20 +47,8 @@
   color: blue;
 }
 
-.intro {
-  width: 100%;
-  height: 30rem;
-  background: linear-gradient(to bottom, rgb(19, 45, 102),rgb(8, 77, 180));
-}
-
-.intro h2 {
-  color: rgba(255, 255, 255, 0.849);
-  font-size: 2.5rem;
-  text-align: center;
-  margin-top: 3rem;
-}
-
-.top-artists {
+.top-artists,
+.top-tracks {
   padding: 1rem;
   display: flex;
   justify-content: center;
@@ -68,13 +56,12 @@
   flex-wrap: wrap;
 }
 
-.tracks{
-  padding: 1rem;
-  overflow: hidden;
+.top-tracks {
+  margin-top: 1rem;
 }
 
 .top-artists h2,
-.tracks h2 {
+.top-tracks h2 {
   width: 100%;
   color: #fff;
   font-size: 2rem;
@@ -82,12 +69,8 @@
   margin-bottom: -5rem;
 }
 
-.tracks h2{
-  margin: 0;
-  margin-bottom: 25rem;
-}
-
-.artists-list {
+.artists-list,
+.tracks {
   width: 100%;
   height: 30rem;
   display: flex;
@@ -105,7 +88,8 @@
   overflow: hidden;
 }
 
-.artist {
+.artist,
+.track {
   position: absolute;
   width: 16rem;
   max-height: 19rem;
@@ -118,7 +102,8 @@
 }
 
 .artist p,
-.artist-all p {
+.artist-all p,
+.track p {
   position: absolute;
   color: #fff;
   font-size: 1.6rem;
@@ -128,12 +113,18 @@
   background: rgba(10, 10, 10, 0.474);
 }
 
+.track p {
+  margin: 0;
+  top: 5px;
+}
+
 .artist-all p {
   position: relative;
   width: 100%;
 }
 
-.artist:hover {
+.artist:hover,
+.track:hover {
   transform: scale(1.22,1.25);
   z-index: 1000;
 }
@@ -167,7 +158,7 @@
 
 .top-artists:hover .next,
 .top-artists:hover .prev,
-.tracks:hover .next-track {
+.top-tracks:hover .next-track {
   opacity: 1;
   z-index: 10000;
 }
@@ -183,54 +174,6 @@
   color: rgb(27, 64, 121);
 }
 
-.tracks {
-  height: 29rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
- 
-}
-
-.top-tracks {
-  width: 100%;
-  padding: 1rem;
-  overflow-x: visible;
-  white-space: nowrap;
-  transition: all 0.45s ease-out;
-}
-
-.top-tracks .track {
-  width: 50%;
-  display: inline-block;
-  white-space: normal;
-  position: relative;
-  z-index: 1;
-  transition: all 0.45s ease-in;
-  vertical-align: top;
-  animation: slide 0.45s ease-in;
-}
-
-.top-tracks .track p {
-  position: absolute;
-  top: 40px;
-  color: #fff;
-  font-size: 1.6rem;
-  width: 100%;
-  padding: 1rem 0;
-  margin-top: -40px;
-  background: rgba(10, 10, 10, 0.474);
-}
-
-.top-tracks .track:hover {
- margin: 0 4rem;
- transform: scale(1.2)
-}
-
-.top-tracks .track:hover .details-track {
-  opacity: 1;
-}
-
 .details-track {
   position: absolute;
   bottom: 5px;
@@ -243,13 +186,13 @@
   transition: opacity 0.45s ease-in;
 }
 
+.track:hover .details-track {
+  opacity: 1;
+}
+
 @media(min-width: 560px) {
   .artist-all {
     width: 33.3333%;
-  }
-  .top-tracks .track {
-    width: 33.3333%;
-    
   }
 }
 
@@ -257,18 +200,11 @@
   .artist-all {
     width: 25%;
   }
-  .top-tracks .track {
-    width: 25%;
-    
-  }
 }
 
 @media(min-width: 960px) {
   .artist-all {
     width: 20%;
-  }
-  .top-tracks .track {
-    width: 15%;
   }
 }
 
