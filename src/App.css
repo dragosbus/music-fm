@@ -68,12 +68,22 @@
   flex-wrap: wrap;
 }
 
-.top-artists h2 {
+.tracks{
+  padding: 1rem;
+}
+
+.top-artists h2,
+.tracks h2 {
   width: 100%;
   color: #fff;
   font-size: 2rem;
   font-weight: 300;
   margin-bottom: -5rem;
+}
+
+.tracks h2{
+  margin: 0;
+  margin-bottom: 3rem;
 }
 
 .artists-list {
@@ -130,7 +140,7 @@
 .artist img,
 .artist-all img,
 .track img {
-  max-width: 100%;
+  width: 100%;
   height: auto;
 }
 
@@ -185,6 +195,17 @@
   transition: all 0.45s ease-in;
   vertical-align: top;
   animation: slide 0.45s ease-in;
+}
+
+.top-tracks .track p {
+  position: absolute;
+  top: 40px;
+  color: #fff;
+  font-size: 1.6rem;
+  width: 100%;
+  padding: 1rem 0;
+  margin-top: -40px;
+  background: rgba(10, 10, 10, 0.474);
 }
 
 .top-tracks .track:hover {

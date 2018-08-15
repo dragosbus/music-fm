@@ -3,7 +3,8 @@ import Track from './Track';
 
 const TopTracks = props => {
   return (
-    <div>
+    <div className="tracks">
+        <h2>Top Tracks</h2>
       <ul className="top-tracks"  onClick={props.nextTrack}>
         {props.tracks.map(track => (
           <Track {...track} />
