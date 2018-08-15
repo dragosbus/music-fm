@@ -20,12 +20,17 @@ export const searchTerm = (term) => ({
 export const getArtistsMiddle = () => dispatch => {
     fetch(`http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${API_KEY}&format=json&limit=100`)
       .then(res=>res.json())
-      .then(res=>{
-        dispatch(getArtists(res.artists.artist));
+      .then(data=>{
+        dispatch(getArtists(data.artists.artist));
       })
       .catch(err=>console.log(err));
 };
 
 export const getTracksMiddle = () => dispatch => {
-
+    fetch(`http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=${API_KEY}&format=json`)
+        .then(res=>res.json())
+        .then(data=>{
+            dispatch(getTracks(data.tracks.track));
+        })
+        .catch(err=>console.log(err));
 };

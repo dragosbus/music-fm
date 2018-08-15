@@ -68,12 +68,22 @@
   flex-wrap: wrap;
 }
 
-.top-artists h2 {
+.tracks{
+  padding: 1rem;
+}
+
+.top-artists h2,
+.tracks h2 {
   width: 100%;
   color: #fff;
   font-size: 2rem;
   font-weight: 300;
   margin-bottom: -5rem;
+}
+
+.tracks h2{
+  margin: 0;
+  margin-bottom: 3rem;
 }
 
 .artists-list {
@@ -91,6 +101,7 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  overflow: hidden;
 }
 
 .artist {
@@ -122,17 +133,15 @@
 }
 
 .artist:hover {
-  transform: scale(1.2,1.25);
+  transform: scale(1.22,1.25);
   z-index: 1000;
 }
 
-.artist:hover .artist {
-  margin: 0 2rem;
-}
-
 .artist img,
-.artist-all img {
+.artist-all img,
+.track img {
   width: 100%;
+  height: auto;
 }
 
 .next,
@@ -171,9 +180,45 @@
   color: rgb(27, 64, 121);
 }
 
+.top-tracks {
+  width: 100%;
+  overflow-x: visible;
+  white-space: nowrap;
+}
+
+.top-tracks .track {
+  width: 50%;
+  display: inline-block;
+  white-space: normal;
+  position: relative;
+  z-index: 1;
+  transition: all 0.45s ease-in;
+  vertical-align: top;
+  animation: slide 0.45s ease-in;
+}
+
+.top-tracks .track p {
+  position: absolute;
+  top: 40px;
+  color: #fff;
+  font-size: 1.6rem;
+  width: 100%;
+  padding: 1rem 0;
+  margin-top: -40px;
+  background: rgba(10, 10, 10, 0.474);
+}
+
+.top-tracks .track:hover {
+ margin: 0 2rem;
+}
+
 @media(min-width: 560px) {
   .artist-all {
     width: 33.3333%;
+  }
+  .top-tracks .track {
+    width: 33.3333%;
+    
   }
 }
 
@@ -181,10 +226,26 @@
   .artist-all {
     width: 25%;
   }
+  .top-tracks .track {
+    width: 25%;
+    
+  }
 }
 
 @media(min-width: 960px) {
   .artist-all {
     width: 20%;
+  }
+  .top-tracks .track {
+    width: 20%;
+  }
+}
+
+@keyframes slide {
+  0% {
+    transform: translate3d(100%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0,0,0);
   }
 }
