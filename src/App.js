@@ -19,6 +19,7 @@ class App extends Component {
 
   componentDidMount() {
     this.props.getArtists();
+    this.props.getTracks();
   }
 
   nextTop() {
@@ -66,6 +67,9 @@ class App extends Component {
 const mapDispatchToProps = dispatch => ({
   getArtists() {
     dispatch(Actions.getArtistsMiddle());
+  },
+  getTracks() {
+    dispatch(Actions.getTracksMiddle());
   },
   setSearchTerm(term) {
     dispatch(Actions.searchTerm(term));
