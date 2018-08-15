@@ -6,6 +6,7 @@ import './App.css';
 import Header from './components/Header';
 import TopArtists from './components/TopArtists';
 import AllArtists from './components/AllArtists';
+import TopTracks from './components/TopTracks';
 
 import * as Actions from './actions/actionsCreators';
 
@@ -13,13 +14,26 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      posLeft: 0
+      posLeft: 0,
+      tracksPerPage: 0,
+      pageTrack: 1
     };
   }
 
   componentDidMount() {
+    //fetch data
     this.props.getArtists();
     this.props.getTracks();
+    //set how many tracks should pe on the page depend of the viewport
+    if(window.outerWidth > 0 && window.outerWidth <= 560) {
+      this.setState({tracksPerPage: 2});
+    } else if(window.outerWidth > 560 && window.outerWidth <= 760) {
+      this.setState({tracksPerPage: 3});
+    } else if(window.outerWidth > 760 && window.outerWidth <= 960) {
+      this.setState({tracksPerPage: 4});
+    } else {
+      this.setState({tracksPerPage: 5});
+    }
   }
 
   nextTop() {
@@ -34,8 +48,13 @@ class App extends Component {
     });
   }
 
+  nextTrack() {
+    this.setState({pageTrack: this.state.pageTrack * this.state.tracksPerPage < this.props.tracks.length ? this.state.pageTrack + 1 : 1})
+  }
+
   render() {
-    let { artists, searchTerm, setSearchTerm } = this.props;
+    let { artists, searchTerm, tracks, setSearchTerm } = this.props;
+    let {pageTrack, tracksPerPage} = this.state;
     console.log(this.props);
     return (
       <div className="App">
@@ -47,12 +66,19 @@ class App extends Component {
                 exact
                 path="/"
                 render={() => (
-                  <TopArtists
-                    topArtists={artists.slice(0, 10)}
-                    nextArtist={this.nextTop.bind(this)}
-                    prevArtist={this.prevTop.bind(this)}
-                    left={this.state.posLeft}
-                  />
+                  <div>
+                    <TopArtists
+                      topArtists={artists.slice(0, 10)}
+                      nextArtist={this.nextTop.bind(this)}
+                      prevArtist={this.prevTop.bind(this)}
+                      left={this.state.posLeft}
+                    />
+                    
+                    <TopTracks 
+                      tracks={tracks.slice((pageTrack-1) * tracksPerPage, pageTrack * tracksPerPage)} 
+                      nextTrack={this.nextTrack.bind(this)} 
+                    />
+                  </div>
                 )}
               />
               <Route path="/artists" render={() => <AllArtists artists={artists} />} />

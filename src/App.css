@@ -128,8 +128,10 @@
 }
 
 .artist img,
-.artist-all img {
-  width: 100%;
+.artist-all img,
+.track img {
+  max-width: 100%;
+  height: auto;
 }
 
 .next,
@@ -168,9 +170,34 @@
   color: rgb(27, 64, 121);
 }
 
+.top-tracks {
+  width: 100%;
+  overflow-x: visible;
+  white-space: nowrap;
+}
+
+.top-tracks .track {
+  width: 50%;
+  display: inline-block;
+  white-space: normal;
+  position: relative;
+  z-index: 1;
+  transition: all 0.45s ease-in;
+  vertical-align: top;
+  animation: slide 0.45s ease-in;
+}
+
+.top-tracks .track:hover {
+ margin: 0 2rem;
+}
+
 @media(min-width: 560px) {
   .artist-all {
     width: 33.3333%;
+  }
+  .top-tracks .track {
+    width: 33.3333%;
+    
   }
 }
 
@@ -178,10 +205,26 @@
   .artist-all {
     width: 25%;
   }
+  .top-tracks .track {
+    width: 25%;
+    
+  }
 }
 
 @media(min-width: 960px) {
   .artist-all {
     width: 20%;
+  }
+  .top-tracks .track {
+    width: 20%;
+  }
+}
+
+@keyframes slide {
+  0% {
+    transform: translate3d(100%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0,0,0);
   }
 }

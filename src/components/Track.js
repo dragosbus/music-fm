@@ -2,7 +2,10 @@ import React from 'react';
 
 const Track = props => {
     return(
-        <li>{props.name}</li>
+        <li className="track">
+            <img src={props.image[3]['#text']}/>
+            <p>{props.name}</p>
+        </li>
     );
 };
 
