@@ -12,6 +12,11 @@ export const getTracks = (data) => ({
     payload: data
 });
 
+export const getArtistTopTracks = (data) => ({
+    type: ActionTypes.GET_ARTIST_TOP_TRACKS,
+    payload: data
+});
+
 export const searchTerm = (term) => ({
     type: ActionTypes.SET_SEARCH_TERM,
     term
@@ -32,5 +37,14 @@ export const getTracksMiddle = () => dispatch => {
         .then(data=>{
             dispatch(getTracks(data.tracks.track));
         })
+        .catch(err=>console.log(err));
+};
+
+export const getArtistTopTracksMiddle = (artist) => dispatch => {
+    fetch(`http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${artist}&api_key=${API_KEY}&format=json`)
+        .then(res=>res.json())
+        .then(data=> {
+            dispatch(getArtistTopTracks(data.toptracks.track))
+        })  
         .catch(err=>console.log(err));
 };
