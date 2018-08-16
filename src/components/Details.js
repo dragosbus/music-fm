@@ -1,4 +1,5 @@
 import React from 'react';
+import {FaPlay} from 'react-icons/fa'
 
 const Details = props => {
   let artist = props.artist;
@@ -15,6 +16,7 @@ const Details = props => {
                 <li>
                     <img src={track.image[3]['#text']}/>
                     <p>{track.name}</p>
+                    <FaPlay className="play-music"/>
                 </li>
               );
           })}
