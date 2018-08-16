@@ -7,6 +7,7 @@ import Header from './components/Header';
 import TopArtists from './components/TopArtists';
 import AllArtists from './components/AllArtists';
 import TopTracks from './components/TopTracks';
+import Details from './components/Details';
 
 import * as Actions from './actions/actionsCreators';
 
@@ -15,8 +16,12 @@ class App extends Component {
     super(props);
     this.state = {
       posLeft: 0,
-      posLeftTracks: 0
+      posLeftTracks: 0,
+      showDetails: false,
+      artistDetails: 0
     };
+    this.toggleDetails = this.toggleDetails.bind(this);
+    this.changeArtistDetails = this.changeArtistDetails.bind(this);
   }
 
   componentDidMount() {
@@ -43,9 +48,22 @@ class App extends Component {
     });
   }
 
+  prevTrack() {}
+
+  toggleDetails() {
+    this.setState({
+      showDetails: !this.state.showDetails
+    });
+  }
+
+  changeArtistDetails(index) {
+    this.setState({
+      artistDetails: index
+    });
+  }
+
   render() {
     let { artists, searchTerm, tracks, setSearchTerm } = this.props;
-    console.log(this.state);
     return (
       <div className="App">
         <BrowserRouter>
@@ -62,9 +80,18 @@ class App extends Component {
                       nextArtist={this.nextTop.bind(this)}
                       prevArtist={this.prevTop.bind(this)}
                       left={this.state.posLeft}
+                      showDetails={this.state.showDetails}
+                      toggleDetails={this.toggleDetails}
+                      changeArtistDetails={this.changeArtistDetails}
                     />
 
-                    <TopTracks tracks={tracks.slice(0,10)} nextTrack={this.nextTrack.bind(this)} left={this.state.posLeftTracks} />
+                    <Details showDetails={this.state.showDetails} artist={artists[this.state.artistDetails]} />
+
+                    <TopTracks
+                      tracks={tracks.slice(0, 10)}
+                      nextTrack={this.nextTrack.bind(this)}
+                      left={this.state.posLeftTracks}
+                    />
                   </div>
                 )}
               />
