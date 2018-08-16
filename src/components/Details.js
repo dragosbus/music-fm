@@ -9,6 +9,11 @@ const Details = props => {
       <p>{artist.name}</p>
       <p>Listenters: {artist.listeners}</p>
       <p>Total Plays: {artist.playcount}</p>
+      <ul>
+          {props.artistTopTracks.map(track=>{
+              return <li>{track.name}</li>
+          })}
+      </ul>
     </div>
   ) : (
     ''

@@ -57,14 +57,15 @@ class App extends Component {
   }
 
   changeArtistDetails(index) {
+    this.props.getArtistTopTracks(this.props.artists[index]['name']);
     this.setState({
       artistDetails: index
     });
   }
 
   render() {
-    let { artists, searchTerm, tracks, setSearchTerm } = this.props;
-    console.log(artists);
+    let { artists, searchTerm, tracks, setSearchTerm, artistTopTracks } = this.props;
+    console.log(this.props);
     return (
       <div className="App">
         <BrowserRouter>
@@ -86,7 +87,10 @@ class App extends Component {
                       changeArtistDetails={this.changeArtistDetails}
                     />
 
-                    <Details showDetails={this.state.showDetails} artist={artists[this.state.artistDetails]} />
+                    <Details 
+                      showDetails={this.state.showDetails} 
+                      artist={artists[this.state.artistDetails]} artistTopTracks={artistTopTracks.slice(0,10)}
+                    />
 
                     <TopTracks
                       tracks={tracks.slice(0, 10)}
@@ -114,13 +118,17 @@ const mapDispatchToProps = dispatch => ({
   },
   setSearchTerm(term) {
     dispatch(Actions.searchTerm(term));
+  },
+  getArtistTopTracks(artist) {
+    dispatch(Actions.getArtistTopTracksMiddle(artist));
   }
 });
 
 const mapStateToProps = state => ({
   artists: state.artists,
   tracks: state.tracks,
-  searchTerm: state.searchTerm
+  searchTerm: state.searchTerm,
+  artistTopTracks: state.artistTopTracks
 });
 
 export default connect(
