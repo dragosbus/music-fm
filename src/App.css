@@ -105,13 +105,16 @@
 .artist-all p,
 .track p {
   position: absolute;
-  top: 4.5rem;
   color: #fff;
   font-size: 1.6rem;
   width: 94%;
   padding: 1rem 0;
   margin-top: -40px;
   background: rgba(10, 10, 10, 0.474);
+}
+
+.artist p {
+  top: 4.5rem;
 }
 
 .track p {
@@ -122,6 +125,7 @@
 .artist-all p {
   position: relative;
   width: 100%;
+  bottom: 0;
 }
 
 .artist:hover,
@@ -202,12 +206,18 @@
   border-radius: 50%;
   display: block;
   margin: 1rem auto;
+  animation: fade-in 0.5s ease-in;
 }
 
 .details p {
-  font-size: 2rem;
+  font-size: 1.4rem;
   color: #fff;
   text-align: center;
+  margin-top: 1rem;
+}
+
+.details p:nth-of-type(1){
+  font-size: 2rem;
 }
 
 .track:hover .details-track {

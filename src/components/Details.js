@@ -7,6 +7,8 @@ const Details = props => {
     <div className="details">
       <img src={artist.image[3]['#text']} />
       <p>{artist.name}</p>
+      <p>Listenters: {artist.listeners}</p>
+      <p>Total Plays: {artist.playcount}</p>
     </div>
   ) : (
     ''

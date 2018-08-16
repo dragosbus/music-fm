@@ -64,6 +64,7 @@ class App extends Component {
 
   render() {
     let { artists, searchTerm, tracks, setSearchTerm } = this.props;
+    console.log(artists);
     return (
       <div className="App">
         <BrowserRouter>
