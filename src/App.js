@@ -64,7 +64,7 @@ class App extends Component {
   }
 
   render() {
-    let { artists, searchTerm, tracks, setSearchTerm, artistTopTracks } = this.props;
+    let { artists, searchTerm, tracks, setSearchTerm, artistTopTracks, videoTrack} = this.props;
     console.log(this.props);
     return (
       <div className="App">
@@ -121,6 +121,9 @@ const mapDispatchToProps = dispatch => ({
   },
   getArtistTopTracks(artist) {
     dispatch(Actions.getArtistTopTracksMiddle(artist));
+  },
+  getVideoTrack(track) {
+    dispatch(Actions.getVideoForTrack(track));
   }
 });
 
@@ -128,7 +131,8 @@ const mapStateToProps = state => ({
   artists: state.artists,
   tracks: state.tracks,
   searchTerm: state.searchTerm,
-  artistTopTracks: state.artistTopTracks
+  artistTopTracks: state.artistTopTracks,
+  videoTrack: state.videoReducer
 });
 
 export default connect(

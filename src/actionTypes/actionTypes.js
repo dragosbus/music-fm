@@ -2,3 +2,4 @@ export const GET_ARTISTS = 'GET_TOP_ARTISTS';
 export const GET_TRACKS = 'GET_TOP_TRAKS';
 export const SET_SEARCH_TERM = 'SET_SEARCH_TERM';
 export const GET_ARTIST_TOP_TRACKS = 'GET_ARTIST_TOP_TRACKS';
+export const GET_VIDEO_TRACK = 'GET_VIDEO_TRACK';
