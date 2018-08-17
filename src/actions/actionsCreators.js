@@ -26,7 +26,7 @@ export const searchTerm = (term) => ({
 
 export const videoTrack = track => ({
     type: ActionTypes.GET_VIDEO_TRACK,
-    track
+    payload: track
 });
 
 export const getArtistsMiddle = () => dispatch => {
@@ -58,8 +58,7 @@ export const getArtistTopTracksMiddle = (artist) => dispatch => {
 
 export const getVideoForTrack = track => dispatch => {
     YTSearch({ key: YOUTUBE_API_KEY, term: track }, data=> {
-        dispatch(videoTrack(data))
-        console.log(data);
-        console.log(action)
+        dispatch(videoTrack(data[0].id.videoId))
+        console.log(data[0].id.videoId);
       });
 };

@@ -22,6 +22,7 @@ class App extends Component {
     };
     this.toggleDetails = this.toggleDetails.bind(this);
     this.changeArtistDetails = this.changeArtistDetails.bind(this);
+    this.getVideo = this.getVideo.bind(this);
   }
 
   componentDidMount() {
@@ -63,6 +64,13 @@ class App extends Component {
     });
   }
 
+  getVideo(index) {
+    this.setState({toggleVideo:!this.state.toggleVideo})
+    let track = this.props.artistTopTracks[index]
+    this.props.getVideoTrack(track.name);
+    console.log(track)
+  }
+
   render() {
     let { artists, searchTerm, tracks, setSearchTerm, artistTopTracks, videoTrack} = this.props;
     console.log(this.props);
@@ -90,6 +98,9 @@ class App extends Component {
                     <Details 
                       showDetails={this.state.showDetails} 
                       artist={artists[this.state.artistDetails]} artistTopTracks={artistTopTracks.slice(0,10)}
+                      getVideo={this.getVideo}
+                      videoTrack={videoTrack}
+                      toggleVideo={this.state.toggleVideo}
                     />
 
                     <TopTracks
@@ -132,7 +143,7 @@ const mapStateToProps = state => ({
   tracks: state.tracks,
   searchTerm: state.searchTerm,
   artistTopTracks: state.artistTopTracks,
-  videoTrack: state.videoReducer
+  videoTrack: state.videoTrack
 });
 
 export default connect(
