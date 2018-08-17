@@ -18,11 +18,13 @@ class App extends Component {
       posLeft: 0,
       posLeftTracks: 0,
       showDetails: false,
-      artistDetails: 0
+      artistDetails: 0,
+      showVideo: false
     };
     this.toggleDetails = this.toggleDetails.bind(this);
     this.changeArtistDetails = this.changeArtistDetails.bind(this);
     this.getVideo = this.getVideo.bind(this);
+    this.hideVideo = this.hideVideo.bind(this);
   }
 
   componentDidMount() {
@@ -65,10 +67,14 @@ class App extends Component {
   }
 
   getVideo(index) {
-    this.setState({toggleVideo:!this.state.toggleVideo})
+    this.setState({showVideo:true})
     let track = this.props.artistTopTracks[index]
     this.props.getVideoTrack(track.name);
     console.log(track)
+  }
+
+  hideVideo() {
+    this.setState({showVideo: false});
   }
 
   render() {
@@ -100,7 +106,8 @@ class App extends Component {
                       artist={artists[this.state.artistDetails]} artistTopTracks={artistTopTracks.slice(0,10)}
                       getVideo={this.getVideo}
                       videoTrack={videoTrack}
-                      toggleVideo={this.state.toggleVideo}
+                      showVideo={this.state.showVideo}
+                      hideVideo={this.hideVideo}
                     />
 
                     <TopTracks
