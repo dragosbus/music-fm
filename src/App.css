@@ -247,7 +247,7 @@
 
 .top-tracks-artist li p {
   width: 50%;
-  margin-left: -4rem;
+  margin-left: 1rem;
   text-align: left;
   font-size: 1.3rem;
 }
@@ -257,6 +257,7 @@
   height: 3rem;
   color: #fff;
   cursor: pointer;
+  margin-right: 3rem;
 }
 
 .video-track {
@@ -285,6 +286,12 @@
   .top-tracks-artist li {
     width: 30%;
   }
+  .video-track {
+    margin: 1rem;
+    width: 50%;
+    right: 0;
+    height: 40rem;
+  }
 }
 
 @media(min-width: 960px) {
@@ -293,6 +300,10 @@
   }
   .top-tracks-artist li {
     width: 23%;
+  }
+  .video-track {
+    width: 40%;
+    height: 30rem;
   }
 }
 
