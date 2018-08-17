@@ -260,6 +260,18 @@
   margin-right: 3rem;
 }
 
+.video {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 20rem;
+  margin: 0 auto;
+  z-index: 9999;
+  animation: fade-in 0.45s ease-in;
+}
+
 .video-track {
   position: fixed;
   bottom: 0;
@@ -268,12 +280,11 @@
   width: 100%;
   margin: 0 auto;
   z-index: 9999;
+  animation: fade-in 0.45s ease-in;
 }
 
 .hide-video {
-  position: fixed;
-  right: 5rem;
-  top: 1rem;
+  position: absolute;
   z-index: 10000;
   border: none;
   font-size: 3rem;

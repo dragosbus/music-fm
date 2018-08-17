@@ -21,19 +21,24 @@ const Details = props => {
           );
         })}
       </ul>
+
       {props.showVideo ? (
-        <iframe
-          src={`https://www.youtube.com/embed/${props.videoTrack}`}
-          allow="autoplay"
-          allowFullScreen
-          frameBorder="0"
-          modestbranding="1"
-          className="video-track"
-        />
+        <div className="video">
+          <iframe
+            src={`https://www.youtube.com/embed/${props.videoTrack}`}
+            allow="autoplay"
+            allowFullScreen
+            frameBorder="0"
+            modestbranding="1"
+            className="video-track"
+          />
+          <button className="hide-video" onClick={props.hideVideo}>
+            X
+          </button>
+        </div>
       ) : (
         ''
       )}
-      <button className="hide-video" onClick={props.hideVideo}>X</button>
     </div>
   ) : (
     ''
