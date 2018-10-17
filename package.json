@@ -1,6 +1,7 @@
 {
   "name": "musicapi",
   "version": "0.1.0",
+  "homepage": "https://dragosbus.github.io/music-fm/build/",
   "private": true,
   "dependencies": {
     "react": "^16.4.2",
