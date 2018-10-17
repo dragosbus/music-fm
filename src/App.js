@@ -82,7 +82,7 @@ class App extends Component {
     console.log(this.props);
     return (
       <div className="App">
-        <BrowserRouter>
+        <BrowserRouter basename='/music-fm/build'>
           <div>
             <Header setSearchTerm={setSearchTerm} />
             <Switch>
